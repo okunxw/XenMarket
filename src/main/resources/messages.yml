@@ -1,0 +1,3 @@
+prefix: "&6[XenMarket]&r "
+currency_created: "%prefix%Валюта &e%currency% &aсоздана!"
+invest_success: "%prefix%Вы вложили &e%amount% &fв &b%currency%&f по курсу &a%rate%&f!"

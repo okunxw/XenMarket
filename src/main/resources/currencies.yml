@@ -1,0 +1,15 @@
+usd:
+  name: "Доллары"
+  symbol: "$"
+  min_rate: 1.0
+  max_rate: 10.0
+  current_rate: 3.5
+  color: "GREEN"
+btc:
+  name: "Bitcoin"
+  symbol: "₿"
+  min_rate: 1000
+  max_rate: 100000
+  current_rate: 36000
+  color: "GOLD"
+...

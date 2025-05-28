@@ -1,0 +1,17 @@
+title: "Биржа XenMarket"
+size: 27
+items:
+  currency_usd:
+    slot: 10
+    material: GOLD_INGOT
+    name: "&aДоллары"
+    lore:
+      - "&7Курс: &e%usd_rate%"
+      - "&7Инвестировать: &fЛКМ"
+  currency_btc:
+    slot: 12
+    material: DIAMOND
+    name: "&6Bitcoin"
+    lore:
+      - "&7Курс: &e%btc_rate%"
+      - "&7Инвестировать: &fЛКМ"

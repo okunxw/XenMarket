@@ -1,0 +1,5 @@
+name: XenMarket
+version: '${project.version}'
+main: net.xenvision.xenmarket.XenMarket
+api-version: '1.16'
+authors: [XenVision]
