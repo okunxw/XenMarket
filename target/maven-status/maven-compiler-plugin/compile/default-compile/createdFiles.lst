@@ -1,0 +1,9 @@
+net\xenvision\xenmarket\integration\ClanIntegration.class
+net\xenvision\xenmarket\gui\MenuManager.class
+net\xenvision\xenmarket\database\repositories\CurrencyRepository.class
+net\xenvision\xenmarket\listener\MenuListener.class
+net\xenvision\xenmarket\integration\VaultIntegration.class
+net\xenvision\xenmarket\database\DatabaseManager.class
+net\xenvision\xenmarket\currency\Investment.class
+net\xenvision\xenmarket\util\MessageUtil.class
+net\xenvision\xenmarket\util\ConfigUtil.class

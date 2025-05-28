@@ -10,7 +10,7 @@ public class MenuListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player player)) return;
-        if (event.getView().getTitle().equals(net.xenmarket.gui.menus.MainMenu.MENU_TITLE)) {
+        if (event.getView().title().equals(MainMenu.MENU_TITLE)) {
             event.setCancelled(true);
 
             if (event.getCurrentItem() == null || !event.getCurrentItem().hasItemMeta()) return;

@@ -1,9 +1,9 @@
-package net.xenmarket.gui.menus;
+package net.xenvision.xenmarket.gui.menus;
 
 import net.xenvision.xenmarket.XenMarket;
 import net.xenvision.xenmarket.currency.Currency;
 import net.xenvision.xenmarket.currency.CurrencyManager;
-import net.xenvision.xenmarket.database.DatabaseManager;
+import net.xenvision.xenmarket.database.PlayerDataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,9 +19,9 @@ public class MainMenu {
 
     public static void open(Player player) {
         CurrencyManager currencyManager = XenMarket.getInstance().getCurrencyManager();
-        DatabaseManager databaseManager = XenMarket.getInstance().getDatabaseManager();
+        PlayerDataManager playerDataManager = XenMarket.getInstance().getPlayerDataManager();
 
-        List<Currency> currencies = currencyManager.getAllCurrencies();
+        List<Currency> currencies = (List<Currency>) currencyManager.getAllCurrencies();
         int size = ((currencies.size() - 1) / 9 + 1) * 9; // кратно 9
         Inventory inv = Bukkit.createInventory(null, size, MENU_TITLE);
 
@@ -34,7 +34,7 @@ public class MainMenu {
             meta.setDisplayName("§e" + currency.getName() + " §7(" + currency.getSymbol() + ")");
             List<String> lore = List.of(
                     "§7Курс: §a" + currency.getCurrentRate(),
-                    "§7Ваш баланс: §b" + databaseManager.getBalance(player.getUniqueId(), currency.getId()),
+                    "§7Ваш баланс: §b" + playerDataManager.getBalance(player.getUniqueId(), currency.getId()),
                     "",
                     "§aЛКМ: купить   §cПКМ: продать"
             );
