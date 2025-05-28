@@ -3,6 +3,8 @@ package net.xenvision.xenmarket.command;
 import net.xenvision.xenmarket.XenMarket;
 import net.xenvision.xenmarket.database.PlayerDataManager;
 import net.xenvision.xenmarket.currency.Currency;
+import net.xenvision.xenmarket.economy.EconomyManager;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,10 +40,18 @@ public class XenMarketCommand implements CommandExecutor {
                 player.sendMessage("Валюта не найдена!");
                 return true;
             }
+            double price = currency.getCurrentRate() * amount;
+            Economy econ = EconomyManager.getEconomy();
+            if (econ.getBalance(player) < price) {
+                player.sendMessage("Недостаточно средств! Необходимо: " + price);
+                return true;
+            }
+            econ.withdrawPlayer(player, price);
+
             PlayerDataManager pdm = XenMarket.getInstance().getPlayerDataManager();
             double current = pdm.getBalance(player.getUniqueId(), currencyId);
             pdm.setBalance(player.getUniqueId(), currencyId, current + amount);
-            player.sendMessage("Вы купили " + amount + " " + currency.getName() + " (" + currency.getSymbol() + ")");
+            player.sendMessage("Вы купили " + amount + " " + currency.getName() + " (" + currency.getSymbol() + ") за " + price);
             return true;
         }
 
@@ -71,7 +81,12 @@ public class XenMarketCommand implements CommandExecutor {
                 return true;
             }
             pdm.setBalance(player.getUniqueId(), currencyId, current - amount);
-            player.sendMessage("Вы продали " + amount + " " + currency.getName() + " (" + currency.getSymbol() + ")");
+
+            double revenue = currency.getCurrentRate() * amount;
+            Economy econ = EconomyManager.getEconomy();
+            econ.depositPlayer(player, revenue);
+
+            player.sendMessage("Вы продали " + amount + " " + currency.getName() + " (" + currency.getSymbol() + ") и получили " + revenue);
             return true;
         }
 

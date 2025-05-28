@@ -4,6 +4,8 @@ main: net.xenvision.xenmarket.XenMarket
 api-version: '1.16'
 authors: [XenVision]
 description: "Биржа и инвестиции с кастомными валютами для Minecraft"
+depend:
+  - Vault
 commands:
   xenmarket:
     description: "Главная команда XenMarket"
